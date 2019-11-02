@@ -116,6 +116,10 @@ class LinkedList {
 
     // =============================================//
     // Clear list
+    clearList() {
+        this.head = null;
+        this.size = 0;
+    }
 
     // =============================================//
     // Print list data
@@ -138,5 +142,6 @@ ll.insertFirst(300);
 ll.insertLast(400);
 
 ll.removeAt(1);
+// ll.clearList();
 
 ll.printListData();
