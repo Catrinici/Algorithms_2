@@ -213,7 +213,9 @@ Words("9456").length // to return 108
 Words("946").length //to return 36
 Words("7946").length //to return 144
 
-//8.
+
+/****************************************************************** */
+//8.Given the number of pairs of parentheses, return an array of strings, where each string represents a different valid way to order those parentheses. Example: given 2, return ["()()", "(())"].
 
 function printParantesis(n) {
     var words = [];
@@ -244,3 +246,53 @@ function _rPrintParanthesis(str, n, open, close, words) {
     }
 
 }
+
+
+printParenthesis(4).length //to return 14
+printParenthesis(6).length //to return 132
+printParenthesis(7).length //to return 429
+
+
+/****************************************************************** */
+//9.Given a sorted array and a value, recursively determine whether value is found within array.
+//rBinarySearch([1,3,5,6],4) should return false.
+//rBinarySearch([4,5,6,8,12],5) should return true.
+
+function rBinarySearch(arr, num, start, end) {
+    if (start === undefined) {
+        start = 0;
+    }
+    if (end === undefined) {
+        end = arr.length - 1;
+    }
+
+    // Enter code below
+    if (start > end) {
+        console.log("Did not find....")
+        return false;
+    }
+
+    var middle_index = Math.floor((start + end) / 2);
+    console.log("middle index", middle_index);
+
+    var middle_value = arr[middle_index];
+    // console.log("middle value is ", middle_value);
+
+    if (num < middle_value) {
+        return rBinarySearch(arr, num, start, middle_index - 1);
+    } else if (num == middle_value) {
+        console.log("found num !!! ", num)
+        return true;
+    }
+    if (num > middle_value) {
+        return rBinarySearch(arr, num, middle_index + 1, end);
+    }
+
+}
+
+
+rBinarySearch([1, 3, 5, 7], 1) //to return true
+rBinarySearch([1, 3, 5, 7], 7) //to return true
+rBinarySearch([1, 3, 5, 7], 5) //to return true
+rBinarySearch([1, 3, 5, 7], 4) //to return false
+rBinarySearch([1, 3, 5, 7], 10) //to return false
